@@ -1,0 +1,26 @@
+# --- Data & results (regenerated, not committed; matches any subfolder) ---
+data/
+results/
+
+# --- Stray output images at repo root (figures belong under results/) ---
+/*.png
+/*.pdf
+
+# --- Python cache & environments ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+env/
+.ipynb_checkpoints/
+
+# --- SLURM job logs ---
+slurm-*.out
+slurm_*.out
+slurm_*.err
+*.log
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
