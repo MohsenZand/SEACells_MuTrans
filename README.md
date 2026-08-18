@@ -100,18 +100,30 @@ python LARRY/scripts/supp_larry_figures.py --mode transitions
 
 ## Citation
 
-If you use this code, please cite the archived release:
+This code accompanies the manuscript:
 
-> Zand, M. *Transitional Dynamics with SEACells + MuTrans.* Zenodo.
-> https://doi.org/10.5281/zenodo.22002926
+> Yang, X. H.\*, Yu, F., Zand, M., Ai, H., Moskowitz, I. P., & Cunningham, J. M.
+> *Edge reweighting resolves lineage-biased regulatory subnetworks from transient
+> progenitor bottleneck.*
+
+\* Corresponding author. Departments of Pediatrics and the Research Computing
+Center (RCC), University of Chicago.
+
+Please cite the archived software release:
 
 ```bibtex
-@software{seacells_mutrans,
-  author    = {Zand, Mohsen},
-  title     = {Transitional Dynamics with SEACells + MuTrans},
+@software{yang_edge_reweighting_2026,
+  author    = {Yang, Xinan H. and Yu, Felix and Zand, Mohsen and
+               Ai, Horatio and Moskowitz, Ivan P. and Cunningham, John M.},
+  title     = {Edge reweighting resolves lineage-biased regulatory subnetworks
+               from transient progenitor bottleneck},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.22002926},
   url       = {https://doi.org/10.5281/zenodo.22002926}
 }
 ```
+
+## License
+
+Released under the MIT License — see [`LICENSE`](LICENSE).

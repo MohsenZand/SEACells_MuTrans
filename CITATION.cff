@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the archived release below."
+title: "Edge reweighting resolves lineage-biased regulatory subnetworks from transient progenitor bottleneck"
+authors:
+  - family-names: Yang
+    given-names: Xinan H.
+    affiliation: "Department of Pediatrics, University of Chicago"
+  - family-names: Yu
+    given-names: Felix
+    affiliation: "Department of Pediatrics, University of Chicago"
+  - family-names: Zand
+    given-names: Mohsen
+    affiliation: "Research Computing Center (RCC), University of Chicago"
+  - family-names: Ai
+    given-names: Horatio
+    affiliation: "Department of Pediatrics, University of Chicago"
+  - family-names: Moskowitz
+    given-names: Ivan P.
+    affiliation: "Department of Pediatrics, University of Chicago"
+  - family-names: Cunningham
+    given-names: John M.
+    affiliation: "Department of Pediatrics, University of Chicago"
+doi: 10.5281/zenodo.22002926
+version: v1.0.0
+date-released: 2026-08-18
+license: MIT
+repository-code: "https://github.com/MohsenZand/SEACells_MuTrans"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22002926
+    description: Archived software release (Zenodo)
