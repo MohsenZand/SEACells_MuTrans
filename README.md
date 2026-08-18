@@ -102,12 +102,13 @@ python LARRY/scripts/supp_larry_figures.py --mode transitions
 
 This code accompanies the manuscript:
 
-> Yang, X. H.\*, Yu, F., Zand, M., Ai, H., Moskowitz, I. P., & Cunningham, J. M.
+> Yang, X. H.<sup>1,\*</sup>, Yu, F.<sup>1</sup>, Zand, M.<sup>2</sup>, Ai, H.<sup>1</sup>, Moskowitz, I. P.<sup>1</sup>, & Cunningham, J. M.<sup>1</sup>
 > *Edge reweighting resolves lineage-biased regulatory subnetworks from transient
 > progenitor bottleneck.*
 
-\* Corresponding author. Departments of Pediatrics and the Research Computing
-Center (RCC), University of Chicago.
+<sup>1</sup> Department of Pediatrics, University of Chicago
+<sup>2</sup> Research Computing Center (RCC), University of Chicago
+<sup>\*</sup> Corresponding author (X. H. Yang)
 
 Please cite the archived software release:
 
