@@ -1,5 +1,7 @@
 # Transitional Dynamics with SEACells + MuTrans
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22002926.svg)](https://doi.org/10.5281/zenodo.22002926)
+
 Reproducible analysis pipelines that identify transitional cell states and
 transition-driver genes by aggregating single cells into **metacells** with
 [SEACells](https://github.com/dpeerlab/SEACells) and modelling cellular dynamics
@@ -95,3 +97,21 @@ python LARRY/scripts/supp_larry_figures.py --mode transitions
    Score (TCS)**, orders cells along it, and classifies genes into
    **TD** (transition-driver), **MS** (meta-stable) and **IH** (intermediate-hybrid)
    categories, rendered as the transition heatmaps.
+
+## Citation
+
+If you use this code, please cite the archived release:
+
+> Zand, M. *Transitional Dynamics with SEACells + MuTrans.* Zenodo.
+> https://doi.org/10.5281/zenodo.22002926
+
+```bibtex
+@software{seacells_mutrans,
+  author    = {Zand, Mohsen},
+  title     = {Transitional Dynamics with SEACells + MuTrans},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22002926},
+  url       = {https://doi.org/10.5281/zenodo.22002926}
+}
+```
