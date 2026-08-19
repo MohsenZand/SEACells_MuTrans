@@ -1,25 +1,25 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the archived release below."
-title: "Edge reweighting resolves lineage-biased regulatory subnetworks from transient progenitor bottleneck"
+title: "TIPS anticipates cell fate from transient progenitor bottlenecks through network edge reweighting"
 authors:
   - family-names: Yang
     given-names: Xinan H.
-    affiliation: "Department of Pediatrics, University of Chicago"
+    affiliation: "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"
   - family-names: Yu
     given-names: Felix
-    affiliation: "Department of Pediatrics, University of Chicago"
+    affiliation: "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"
   - family-names: Zand
     given-names: Mohsen
-    affiliation: "Research Computing Center (RCC), University of Chicago"
+    affiliation: "Research Computing Center (RCC), The University of Chicago, Chicago, IL 60637, USA"
   - family-names: Ai
     given-names: Horatio
-    affiliation: "Department of Pediatrics, University of Chicago"
+    affiliation: "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"
+  - family-names: Lou
+    given-names: Tingjun
+    affiliation: "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"
   - family-names: Moskowitz
     given-names: Ivan P.
-    affiliation: "Department of Pediatrics, University of Chicago"
-  - family-names: Cunningham
-    given-names: John M.
-    affiliation: "Department of Pediatrics, University of Chicago"
+    affiliation: "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"
 doi: 10.5281/zenodo.22002925
 version: v1.0.1
 date-released: 2026-08-19

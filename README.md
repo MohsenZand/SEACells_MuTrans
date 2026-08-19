@@ -102,22 +102,22 @@ python LARRY/scripts/supp_larry_figures.py --mode transitions
 
 This code accompanies the manuscript:
 
-> Yang, X. H.<sup>1,\*</sup>, Yu, F.<sup>1</sup>, Zand, M.<sup>2</sup>, Ai, H.<sup>1</sup>, Moskowitz, I. P.<sup>1</sup>, & Cunningham, J. M.<sup>1</sup>
-> *Edge reweighting resolves lineage-biased regulatory subnetworks from transient
-> progenitor bottleneck.*
+> Yang, X. H.<sup>1,\*</sup>, Yu, F.<sup>1</sup>, Zand, M.<sup>2</sup>, Ai, H.<sup>1</sup>, Lou, T.<sup>1</sup>, & Moskowitz, I. P.<sup>1</sup>
+> *TIPS anticipates cell fate from transient progenitor bottlenecks through
+> network edge reweighting.*
 
-<sup>1</sup> Department of Pediatrics, University of Chicago
-<sup>2</sup> Research Computing Center (RCC), University of Chicago
+<sup>1</sup> Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA
+<sup>2</sup> Research Computing Center (RCC), The University of Chicago, Chicago, IL 60637, USA
 <sup>\*</sup> Corresponding author (X. H. Yang)
 
 Please cite the archived software release:
 
 ```bibtex
-@software{yang_edge_reweighting_2026,
+@software{yang_tips_2026,
   author    = {Yang, Xinan H. and Yu, Felix and Zand, Mohsen and
-               Ai, Horatio and Moskowitz, Ivan P. and Cunningham, John M.},
-  title     = {Edge reweighting resolves lineage-biased regulatory subnetworks
-               from transient progenitor bottleneck},
+               Ai, Horatio and Lou, Tingjun and Moskowitz, Ivan P.},
+  title     = {TIPS anticipates cell fate from transient progenitor bottlenecks
+               through network edge reweighting},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.22002925},
