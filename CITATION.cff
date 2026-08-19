@@ -20,12 +20,12 @@ authors:
   - family-names: Cunningham
     given-names: John M.
     affiliation: "Department of Pediatrics, University of Chicago"
-doi: 10.5281/zenodo.22002926
-version: v1.0.0
-date-released: 2026-08-18
+doi: 10.5281/zenodo.22002925
+version: v1.0.1
+date-released: 2026-08-19
 license: MIT
 repository-code: "https://github.com/MohsenZand/SEACells_MuTrans"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.22002926
-    description: Archived software release (Zenodo)
+    value: 10.5281/zenodo.22002925
+    description: Concept DOI (Zenodo; always resolves to the latest version)
