@@ -113,30 +113,30 @@ def main():
     adata_org = sc.read(config.MUTRANS_AD_ORG)
     adata_seacell = sc.read(config.MUTRANS_AD_SEACELL)
 
-    # 2. Generate transition images (shared by both figures)
+    # 2. Generate transition images (published transitions: A10->A9 and A10->A4)
     print("Generating transition plots...")
     transition_files = {}
-    si1, sf1 = '3', '4'
+    si1, sf1 = '10', '9'
     transition_files = pl.generate_mutrans_transition_plots(adata_seacell, FIG_DIR, si1, sf1, transition_files)
     si2, sf2 = '10', '4'
     transition_files = pl.generate_mutrans_transition_plots(adata_seacell, FIG_DIR, si2, sf2, transition_files)
 
-    # 3. Create Metacell (SEACell) version of the figure
+    # 3. Create Metacell (SEACell) version of the figure -- the published one
     save_path_seacells = FIG_DIR / f'Fig_Comprehensive_Metacells_{si1}_{sf1}_and_{si2}_{sf2}.pdf'
     create_comprehensive_figure(
-        adata_org, adata_seacell, transition_files, 
+        adata_org, adata_seacell, transition_files,
         save_path_seacells, si1, sf1, si2, sf2, cell_level_heatmaps=False,
-        
+
     )
-    
-    # 4. Create Single-Cell version of the figure
-    save_path_cells = FIG_DIR / f'Fig_Comprehensive_Cells_{si1}_{sf1}_and_{si2}_{sf2}.pdf'
-    create_comprehensive_figure(
-        adata_org, adata_seacell, transition_files, 
-        save_path_cells, si1, sf1, si2, sf2, cell_level_heatmaps=True,
-        
-    )
-    
+
+    # 4. Single-cell version -- DISABLED: only metacell-level TD genes are published.
+    #    (Masked out cell-level TD identification/plot; keep for reference only.)
+    # save_path_cells = FIG_DIR / f'Fig_Comprehensive_Cells_{si1}_{sf1}_and_{si2}_{sf2}.pdf'
+    # create_comprehensive_figure(
+    #     adata_org, adata_seacell, transition_files,
+    #     save_path_cells, si1, sf1, si2, sf2, cell_level_heatmaps=True,
+    # )
+
     print("\n" + "="*80)
     print("All figures generated!")
     print("="*80)

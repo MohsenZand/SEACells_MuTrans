@@ -62,50 +62,35 @@ def main():
     si, sf = args.si, args.sf
     cluster_name = args.cluster_name
     
-    fig = plt.figure(figsize=(30, 12))
-    
-    # Cell-level heatmaps
-    if 'rho_class' not in adata_org.obsm:
-            adata_org = tran.map_seacell_memberships_to_cells(adata_org, adata_seacell)
-        
-    if args.original_clusters:
-        gs = gridspec.GridSpec(1, 1, figure=fig, hspace=0.35, wspace=0.4,
-                            left=0.04, right=0.98, top=0.96, bottom=0.04,
-                            height_ratios=[1])
-        
-        ax_i = fig.add_subplot(gs[0, 0])
-    
-        pl.plot_transcendental_heatmap_cell(
-                adata_org, si, sf, ax_i, max_cells=5000, 
-                region_method='adaptive', title=f'Transition C{si} → C{sf} (Cells) -- Clustered by {cluster_name}',
-                fig_dir=FIG_DIR,
-                cluster_name=cluster_name
-            )
-        
-        save_path = FIG_DIR / f'Heatmap_{si}_{sf}_original_clusters.pdf'
+    fig = plt.figure(figsize=(15, 12))
 
-    else:
-        gs = gridspec.GridSpec(1, 2, figure=fig, hspace=0.35, wspace=0.4,
-                            left=0.04, right=0.98, top=0.96, bottom=0.04,
-                            height_ratios=[1])
-        
-        ax_i = fig.add_subplot(gs[0, 0])
-        ax_j = fig.add_subplot(gs[0, 1])
-    
-        pl.plot_transcendental_heatmap(
-                adata_org, si, sf, ax_i, max_cells=5000, 
-                region_method='adaptive', title=f'I: Transition A{si} → A{sf} (Cells)',
-                fig_dir=FIG_DIR
-            )
-        # Metacell-level heatmaps
-        pl.plot_transcendental_heatmap(
-            adata_seacell, si, sf, ax_j, 
-            region_method='logistic', title=f'I: Transition A{si} → A{sf} (Metacells)',
-            fig_dir=FIG_DIR
-        )
-        
-        save_path = FIG_DIR / f'Heatmap_{si}_{sf}.pdf'
-    
+    # NOTE: only metacell-level TD genes are published. All cell-level TD
+    # identification/plot output is masked out below (kept for reference).
+    # if 'rho_class' not in adata_org.obsm:
+    #     adata_org = tran.map_seacell_memberships_to_cells(adata_org, adata_seacell)
+
+    gs = gridspec.GridSpec(1, 1, figure=fig, hspace=0.35, wspace=0.4,
+                           left=0.04, right=0.98, top=0.96, bottom=0.04,
+                           height_ratios=[1])
+    ax_j = fig.add_subplot(gs[0, 0])
+
+    # --- Cell-level heatmaps (DISABLED) ---
+    # pl.plot_transcendental_heatmap(
+    #     adata_org, si, sf, ax_i, max_cells=5000, region_method='adaptive',
+    #     title=f'Transition A{si} -> A{sf} (Cells)', fig_dir=FIG_DIR)
+    # pl.plot_transcendental_heatmap_cell(         # cell-level, clustered by --cluster_name
+    #     adata_org, si, sf, ax_i, max_cells=5000, region_method='adaptive',
+    #     title=f'Transition C{si} -> C{sf} (Cells)', fig_dir=FIG_DIR,
+    #     cluster_name=cluster_name)
+
+    # --- Metacell-level heatmap (published) ---
+    pl.plot_transcendental_heatmap(
+        adata_seacell, si, sf, ax_j,
+        region_method='logistic', title=f'Transition A{si} → A{sf} (Metacells)',
+        fig_dir=FIG_DIR
+    )
+
+    save_path = FIG_DIR / f'Heatmap_{si}_{sf}_metacells.pdf'
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.savefig(save_path.with_suffix('.png'), dpi=300, bbox_inches='tight')
     plt.close()

@@ -42,8 +42,8 @@ SEACELL_H5AD = f'{MUTRANS_DIR}/larry_seacells_mutrans.h5ad'
 FIG_DIR = str(_PROJECT_ROOT / 'results' / 'larry' / 'figures')
 os.makedirs(FIG_DIR, exist_ok=True)
 
-# Attractor transitions of interest (source -> target)
-TRANSITIONS = [('8', '7'), ('8', '5'), ('1', '7'), ('1', '5'), ('1', '8')]
+# Published attractor transitions (source -> target), metacell-level only
+TRANSITIONS = [('4', '11'), ('4', '9')]
 
 
 def read_categorical(obs, key, as_float=False):
@@ -258,15 +258,12 @@ def fig4_dotplot(df):
 
 # ---------------------------------------------------------------------------
 # Transition analysis (HEAVY: needs pyMuTrans + the 4.5 GB cell file).
-# Reuses src.plotting / src.transcendental exactly as scripts 02/03/04 do, so
-# per transition it emits, in results/larry/figures/:
-#   - transition_{s}to{t}.{png,pdf}                      MPPT lineage plot (panel-1 style)
-#   - larry_transition_{s}_to_{t}_C_D_heatmaps.{pdf,png} reduced comprehensive figure:
-#         panel C (violin entropy), panel D (violin land), + the two bottom
-#         transcendental heatmaps (cell-level and metacell-level)
-#   - td_genes_scores_{s}_to_{t}_cell.csv                TD-gene scores (cell level)
-#   - td_genes_scores_{s}_to_{t}_seacell.csv             TD-gene scores (metacell level)
-# The combined figure PDF is the "pdf version" of the two gene-score tables.
+# Only metacell-level TD genes are published; cell-level TD identification/plot
+# is masked out. Per transition it emits, in results/larry/figures/:
+#   - transition_{s}to{t}.{png,pdf}                    MPPT lineage plot
+#   - larry_transition_{s}_to_{t}_metacell.{pdf,png}   panel C (violin entropy),
+#         panel D (violin land), + the metacell-level transcendental heatmap
+#   - td_genes_scores_{s}_to_{t}_seacell.csv           TD-gene scores (metacell level)
 # ---------------------------------------------------------------------------
 def _safe_heatmap(pl, adata, si, sf, ax, fig_dir, title, preferred, max_cells):
     """Draw a transcendental heatmap, falling back to 'adaptive' region
@@ -335,9 +332,10 @@ def generate_transition_figures():
     for k in ('entropy', 'land'):
         adata_org.obs[k] = pd.to_numeric(adata_org.obs[k].astype(str), errors='coerce')
 
-    # Map metacell soft memberships onto single cells once (needed for cell-level TCS)
-    if 'rho_class' not in adata_org.obsm:
-        adata_org = tran.map_seacell_memberships_to_cells(adata_org, adata_seacell)
+    # Cell-level TD is masked out (metacell-level only), so the soft-membership
+    # mapping needed for per-cell TCS is disabled:
+    # if 'rho_class' not in adata_org.obsm:
+    #     adata_org = tran.map_seacell_memberships_to_cells(adata_org, adata_seacell)
 
     for si, sf in TRANSITIONS:
         print(f'\n=== Transition {si} -> {sf} ===')
@@ -356,9 +354,9 @@ def generate_transition_figures():
             plt.close()
             print(f'  MPPT {si}->{sf} FAILED: {e}')
 
-        # (2+3) reduced comprehensive figure: C, D violins + cell & metacell heatmaps.
-        # The two heatmap calls also write the td_genes_scores_*_{cell,seacell}.csv files.
-        fig = plt.figure(figsize=(24, 13))
+        # (2) reduced figure: C, D violins + the published metacell-level TD heatmap.
+        # The metacell heatmap call also writes td_genes_scores_{s}_to_{t}_seacell.csv.
+        fig = plt.figure(figsize=(20, 13))
         gs = gridspec.GridSpec(2, 2, figure=fig, hspace=0.45, wspace=0.28,
                                height_ratios=[1, 1.5])
         ax_c = fig.add_subplot(gs[0, 0])
@@ -366,20 +364,23 @@ def generate_transition_figures():
         ax_d = fig.add_subplot(gs[0, 1])
         pl.plot_violin(adata_org, ax_d, 'land', 'D', groupby='attractor')
 
-        ax_i = fig.add_subplot(gs[1, 0])
-        _safe_heatmap(pl, adata_org, si, sf, ax_i, fig_dir,
-                      title=f'Transition A{si} → A{sf} (Cells)',
-                      preferred='adaptive', max_cells=5000)
-        ax_j = fig.add_subplot(gs[1, 1])
+        # --- Cell-level TD heatmap (DISABLED; metacell-level only) ---
+        # ax_i = fig.add_subplot(gs[1, 0])
+        # _safe_heatmap(pl, adata_org, si, sf, ax_i, fig_dir,
+        #               title=f'Transition A{si} -> A{sf} (Cells)',
+        #               preferred='adaptive', max_cells=5000)
+
+        # --- Metacell-level TD heatmap (published) ---
+        ax_j = fig.add_subplot(gs[1, :])
         _safe_heatmap(pl, adata_seacell, si, sf, ax_j, fig_dir,
                       title=f'Transition A{si} → A{sf} (Metacells)',
                       preferred='logistic', max_cells=None)
 
         for ext in ('pdf', 'png'):
-            fig.savefig(f'{FIG_DIR}/larry_transition_{si}_to_{sf}_C_D_heatmaps.{ext}',
+            fig.savefig(f'{FIG_DIR}/larry_transition_{si}_to_{sf}_metacell.{ext}',
                         dpi=200, bbox_inches='tight')
         plt.close(fig)
-        print(f'  wrote larry_transition_{si}_to_{sf}_C_D_heatmaps (+ td_genes CSVs)')
+        print(f'  wrote larry_transition_{si}_to_{sf}_metacell (+ td_genes seacell CSV)')
 
     print(f'\nTransition figures + gene lists in {FIG_DIR}')
 
