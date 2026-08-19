@@ -1,0 +1,25 @@
+{
+  "title": "TIPS anticipates cell fate from transient progenitor bottlenecks through network edge reweighting",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "description": "Reproducible SEACells + MuTrans analysis pipelines that identify transitional cell states and transition-driver genes, applied to iPSC-derived cardiomyocyte differentiation (GEO GSE175634) and LARRY lineage-traced hematopoiesis (GEO GSE140802). Code accompanying the manuscript \"TIPS anticipates cell fate from transient progenitor bottlenecks through network edge reweighting\".",
+  "creators": [
+    {"name": "Yang, Xinan H.", "affiliation": "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"},
+    {"name": "Yu, Felix", "affiliation": "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"},
+    {"name": "Zand, Mohsen", "affiliation": "Research Computing Center (RCC), The University of Chicago, Chicago, IL 60637, USA"},
+    {"name": "Ai, Horatio", "affiliation": "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"},
+    {"name": "Lou, Tingjun", "affiliation": "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"},
+    {"name": "Moskowitz, Ivan P.", "affiliation": "Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA"}
+  ],
+  "keywords": [
+    "single-cell RNA-seq",
+    "metacells",
+    "SEACells",
+    "MuTrans",
+    "cell fate",
+    "gene regulatory network",
+    "cardiomyocyte differentiation",
+    "hematopoiesis"
+  ]
+}
