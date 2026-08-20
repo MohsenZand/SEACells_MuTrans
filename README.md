@@ -10,10 +10,10 @@ with [MuTrans](https://github.com/cliffzhou92/MuTrans-release).
 Two datasets are analysed, each in its own self-contained folder that shares the
 common analysis library in [`src/`](src/):
 
-| Folder | Dataset | Description |
-|--------|---------|-------------|
-| [`ipsc_cardiomyocyte/`](ipsc_cardiomyocyte/) | GEO **GSE175634** | iPSC-derived cardiomyocyte differentiation |
-| [`LARRY/`](LARRY/) | GEO **GSE140802** | LARRY lineage-traced hematopoiesis (NM trajectory) |
+| Folder                                        | Dataset                | Description                                        |
+| --------------------------------------------- | ---------------------- | -------------------------------------------------- |
+| [`ipsc_cardiomyocyte/`](ipsc_cardiomyocyte/) | GEO**GSE175634** | iPSC-derived cardiomyocyte differentiation         |
+| [`LARRY/`](LARRY/)                           | GEO**GSE140802** | LARRY lineage-traced hematopoiesis (NM trajectory) |
 
 ## Repository layout
 
@@ -41,12 +41,14 @@ common analysis library in [`src/`](src/):
 ## Setup
 
 **1. Environment**
+
 ```bash
 conda env create -f environment.yml
 conda activate ipsc_mutrans_seacells
 ```
 
 **2. Manual dependencies** (not available as plain conda/PyPI packages)
+
 ```bash
 pip install git+https://github.com/dpeerlab/SEACells.git      # SEACells
 git clone https://github.com/cliffzhou92/MuTrans-release       # MuTrans
@@ -55,10 +57,12 @@ export MUTRANS_PATH=/path/to/MuTrans-release                   # point config at
 
 **3. Data** — download the raw `.h5ad` files from GEO and either place them under
 `data/raw/` or point the environment variables at them:
+
 ```bash
 export IPSC_RAW_H5AD=/path/to/GSE175634_iPSC_CM.sct3k_reclustered.h5ad
 export LARRY_RAW_H5AD=/path/to/larry_NM_trajectory_normedCounts.h5ad
 ```
+
 All other paths are repo-relative (see [`src/config.py`](src/config.py)); nothing is
 machine-specific.
 
@@ -67,6 +71,7 @@ machine-specific.
 Run every command from the repository root so `from src import ...` resolves.
 
 ### iPSC cardiomyocyte (GSE175634)
+
 ```bash
 python ipsc_cardiomyocyte/scripts/01_run_seacells.py          # raw -> SEACell metacells
 python ipsc_cardiomyocyte/scripts/02_run_mutrans.py           # metacells -> MuTrans + lineage CSVs
@@ -75,6 +80,7 @@ python ipsc_cardiomyocyte/scripts/04_generate_individual_figures.py --si 3 --sf 
 ```
 
 ### LARRY hematopoiesis (GSE140802)
+
 ```bash
 # SEACells (92.5k cells -> 1.2k metacells) + MuTrans (K=14). Long fit -> use SLURM:
 sbatch LARRY/scripts/supp_larry.sbatch          # edit account/partition/env first
@@ -102,20 +108,20 @@ python LARRY/scripts/supp_larry_figures.py --mode transitions
 
 This code accompanies the manuscript:
 
-> Yang, X. H.<sup>1,\*</sup>, Yu, F.<sup>1</sup>, Zand, M.<sup>2</sup>, Ai, H.<sup>1</sup>, Lou, T.<sup>1</sup>, & Moskowitz, I. P.<sup>1</sup>
+> Yang, X. H.<sup>1,</sup>, Yu, F.<sup>1</sup>, Zand, M.<sup>2</sup>, Ai, H.<sup>1</sup>, Luo, T.<sup>1</sup>, & Moskowitz, I. P.<sup>1</sup>
 > *TIPS anticipates cell fate from transient progenitor bottlenecks through
 > network edge reweighting.*
 
 <sup>1</sup> Department of Pediatrics, The University of Chicago, Chicago, IL 60637, USA
 <sup>2</sup> Research Computing Center (RCC), The University of Chicago, Chicago, IL 60637, USA
-<sup>\*</sup> Corresponding author (X. H. Yang)
+<sup></sup> Corresponding author (X. H. Yang)
 
 Please cite the archived software release:
 
 ```bibtex
 @software{yang_tips_2026,
   author    = {Yang, Xinan H. and Yu, Felix and Zand, Mohsen and
-               Ai, Horatio and Lou, Tingjun and Moskowitz, Ivan P.},
+               Ai, Horatio and Luo, Tingjun and Moskowitz, Ivan P.},
   title     = {TIPS anticipates cell fate from transient progenitor bottlenecks
                through network edge reweighting},
   year      = {2026},
